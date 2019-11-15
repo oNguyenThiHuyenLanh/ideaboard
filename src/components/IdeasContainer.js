@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Idea from './Idea'
+import update from 'immutability-helper'
 
 class IdeasContainer extends Component {
   constructor(props) {
@@ -31,6 +32,10 @@ class IdeasContainer extends Component {
     )
     .then(response => {
       console.log(response)
+      const ideas = update(this.state.ideas, {
+        $splice: [[0, 0, response.data]]
+      })
+      this.setState({ideas: ideas})
     })
     .catch(error => console.log(error))
   }

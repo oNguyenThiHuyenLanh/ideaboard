@@ -11,6 +11,7 @@ class IdeaFrom extends Component {
   }
 
   handleInput = (e) => {
+    this.props.resetNotification()
     this.setState({[e.target.name]: e.target.value})
   }
 
@@ -24,6 +25,10 @@ class IdeaFrom extends Component {
       `http://localhost:3000/api/v1/ideas/${this.props.idea.id}`,
       {idea: idea}
     )
+    .then(response => {
+      console.log(response)
+      this.props.updateIdea(response.data)
+    })
     .catch(error => console.log(error))
   }
 

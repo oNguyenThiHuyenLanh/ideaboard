@@ -8,7 +8,8 @@ class IdeasContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      ideas: []
+      ideas: [],
+      editingIdeaId: null
     }
   }
 

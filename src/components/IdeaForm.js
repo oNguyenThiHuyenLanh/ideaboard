@@ -36,7 +36,7 @@ class IdeaFrom extends Component {
     return (
       <div className="title">
         <form onBlur={this.handleBlur} >
-          <input className="input" type="text" name="title" placeholder="Enter a title pleaseeee" value={this.state.title} onChange={this.handleInput} />
+          <input className="input" type="text" name="title" placeholder="Enter a title pleaseeee" value={this.state.title} onChange={this.handleInput} ref={this.props.titleRef}/>
           <textarea className="input" name="body" placeholder="Describe your idea" value={this.state.body} onChange={this.handleInput}></textarea>
         </form>
       </div>

@@ -56,6 +56,11 @@ class IdeasContainer extends Component {
 
   resetNotification = () => {this.setState({notification: ''})}
 
+  enableEditing = (id) => {
+    this.setState({editingIdeaId: id},
+      () => { this.title.focus() })
+  }
+
   render() {
     return (
       <div>
@@ -67,9 +72,9 @@ class IdeasContainer extends Component {
         </span>
         {this.state.ideas.map((idea) => {
           if(this.state.editingIdeaId === idea.id){
-            return (<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} resetNotification={this.resetNotification}/>)
+            return (<IdeaForm idea={idea} key={idea.id} updateIdea={this.updateIdea} titleRef= {input => this.title = input} resetNotification={this.resetNotification}/>)
           } else {
-            return (<Idea idea={idea} key={idea.id}/>)
+            return (<Idea idea={idea} key={idea.id} onClick={this.enableEditing}/>)
           }
         })}
       </div>
